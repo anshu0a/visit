@@ -3,16 +3,13 @@ if(process.env.NODE_EN != "production"){
 }
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
 const mon = require("mongoose");
 const path = require("path");
 const wrap = require("./utils/wrap.js");
 const expresserr = require("./utils/expresserr.js");
 const multer = require("multer")
-const {storage,removeimage} = require("./cloudconfig.js")
+const {storage} = require("./cloudconfig.js")
 const upload = multer({storage})
-const Review = require("./models/review.js");
-const listing = require("./models/listing.js");
 const cookieparser = require("cookie-parser");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')
@@ -29,11 +26,10 @@ const filter=  require("./controllers/filter.js")
 app.listen(8080, () => {
     console.log("Express working...")
 });
-
-const db_url =process.env.ATLAS
+const monurl = process.env.ATLAS
 main().then(() => { console.log("Mongoose also Working...") }).catch((e) => { console.log(e) })
 async function main() {
-    await mon.connect(db_url)
+    await mon.connect(monurl)
 }
 
 
@@ -44,19 +40,19 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieparser())
 
-const store =  MongoStore.create({
-    mongoUrl:db_url,
+const cstore =  MongoStore.create({
+    mongoUrl:monurl,
     crypto:{
-        secret: process.env.secret,
+        secret: process.env.SECRET,
     },
     touchAfter: 24*3600,
 });
-store.on("error",()=>{
-    console.log("ErroR iN MONGO sTORE : ",err)
+cstore.on("error",()=>{
+    console.log("ErroR iN MONGO sTORE : ")
 })
 app.use(session({
-    store,
-    secret:process.env.secret,
+    store:cstore,
+    secret:process.env.SECRET,
     resave: false,
     saveUninitialized: false, 
     cookie: {
