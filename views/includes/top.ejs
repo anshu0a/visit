@@ -1,0 +1,38 @@
+<head>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<div class="top">
+    <a href="/home" class="pre">
+        <svg class="icon" width=" 24" height=" 24" viewBox="0 -20 520 550" fill="none">
+            <path fill=""
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+        </svg>
+        <h3>WanderLust</h3>
+    </a> 
+    
+    <div class="aa">
+        <a href="/crt"><svg width="14" fill="rgb(253, 14, 146)" viewBox="0 0 448 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288l111.5 0L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7l-111.5 0L349.4 44.6z"/></svg>&nbsp;<div>New</div></a>
+    <%if(state==="yes"){%>
+        <a class="logout"><svg  width="17" fill="rgb(253, 14, 146)" viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>&nbsp;<div>Logout</div></a>
+    <%}else{%>
+        <a href="/login"><svg  width="17" fill="rgb(253, 14, 146)" viewBox="0 0 512 512"><path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>&nbsp;<div>Login</div></a>
+        <%}%>
+    
+    </div>
+    <form method="post" class="logoutform" style="display:none" action="/logout"></form>
+
+    <div class="sx">
+        <svg class="sv " width="24" viewBox="0 0 24 24">
+            <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round" stroke-width="1.5" x1="8"
+                x2="20" y1="5" y2="5"></line>
+            <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round" stroke-width="1.5" x1="3"
+                x2="4" y1="5" y2="5"></line>
+            <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round" stroke-width="1.5" x1="3"
+                x2="20" y1="12" y2="12"></line>
+            <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round" stroke-width="1.5" x1="3"
+                x2="20" y1="19" y2="19"></line>
+        </svg>
+    </div>
+
+</div>
+<script src="/top.js" defer></script>

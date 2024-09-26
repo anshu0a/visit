@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="/err.css"></link>
+</head>
+<body  <%if(message==="page not found!"){%>style="background-color: rgb(255, 249, 237);"<%}%>>
+    <div class="box">
+        <img src="/img/<%if(message==="page not found!"){%>not.jpg<%}else if(message==="Somthing is missing in your Edit request"){%>edit.jpg<%}else if(message==="Somthing is missing in your Creation request"){%>crt.jpg<%}else{%>err.jpeg<%}%>">
+        <p><%=message%></p>
+        <div class="back">Go back</div>
+    </div>
+    <script>
+        document.querySelector(".back").addEventListener("click",()=>{window.history.back();});
+    </script>
+</body>
+</html>

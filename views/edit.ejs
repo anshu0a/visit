@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=data[0].title%>
+    </title>
+    <link href="/card.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="loader">
+        <div class="one">Updating . . .</div>
+        <div class="waitt">It may take few seconds more,<br> while updating your listing</div>
+    </div> 
+    <%-include("includes/top.ejs")%>
+    <div class="bda">
+        <div class="outtfoam">
+            <h2>&nbsp; Edit your location</h2>
+            <div class="outtimg">
+                <img class="showimgg" src="<%=data[0].image[0].url.replace("denrzaquu/image/upload","denrzaquu/image/upload/f_auto/q_auto/e_blur:300")%>">
+                <label class="acceptimgx" for="actimg">Change image</label>
+            </div>
+            <form action="/change/<%=data[0]._id%>" method="post" class="form" enctype="multipart/form-data" >
+                <input type="file" hidden accept="image/*"style="color:rgb(160, 160, 160); font-size: 13px;background:none;border:none" id="actimg" name="actimg" placeholder="Upload image">
+                <label for="tit">Edit title</label>
+                <input type="text" id="tit" name="titlex" value="<%=data[0].title%>">
+                <div class="half">
+                    <div class="half1">
+                        <label for="cou">Edit country</label>
+                        <input type="text" id="cou" name="countryx" value="<%=data[0].country%>">
+                    </div>
+                    <div class="half1">
+                        <label for="pri">Edit price</label>
+                        <input type="text" id="pri" name="pricex" value="<%=data[0].price%>">
+                    </div>
+                </div>
+                <label for="loc">Edit location</label>
+                <input type="text" id="loc" name="locationx" value="<%=data[0].location%>">
+                <label>Filters</label>
+                <div class="options">
+                    <input type="array" id="filters" value="<%=data[0].filters%>"  name="filters">
+                    <div class="opn addx sample" style="display:none">
+                        <div>Pools</div>
+                        <svg viewBox="0 0 384 512">
+                            <path stroke-width=""
+                                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                        </svg>
+                    </div>
+                </div>   
+                <label for="dec">Edit description</label>
+                <textarea id="dec" name="descriptionx"><%=data[0].description%></textarea>
+                <div class="warn" >
+                    <svg viewBox="0 0 24 24" width="18" height="25" fill="red">
+                        <g>
+                            <path
+                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm1-4a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0z">
+                            </path>
+                        </g>
+                    </svg>
+                    <div class="msg">Enter title</div>
+                </div>
+                <button class="clk" type="button"style="background-color:rgb(255, 0, 0)">Edit location</button>
+            </form>
+            </div>
+            <%-include("includes/foot.ejs")%>
+    </div>
+    <script src="/edit.js"></script>
+</body>
+
+</html>

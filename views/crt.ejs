@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ads</title>
+    <link href="card.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="loader" style="display:none" ><div class="one">posting . . .</div> </div>
+    <%-include("includes/top.ejs")%>
+        <div class="bda">
+            
+            <div class="outtfoam">
+                <h2>Add a new locations</h2>
+                <form action="/new" method="post" class="form" enctype="multipart/form-data">
+                    <label for="titlex">Title</label>
+                    <input type="text" id="titlex"  name="titlex" placeholder="Enter title">
+                    <div class="sowim">
+                        <div>
+                            <svg class="norm" viewBox="0 0 384 512">
+                                <path stroke-width=""
+                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                            </svg>
+                        </div>
+                        <img src="/img/sa3.jpg">
+                    </div>
+                    <label class="acceptimgx" for="actimg">
+                        <svg width="10" style="transform: rotateZ(45deg);" fill="white" viewBox="0 0 384 512">
+                            <path stroke-width=""
+                                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                        </svg>
+                        <div>Image</div></label>
+                    <input type="file" hidden accept="image/*" id="actimg" name="actimg" placeholder="Upload image">
+                    <label for="img">Or upload image using image url  (optional)</label>
+                    <input type="text" id="img" name="urlx" placeholder="Enter image url ">
+                    <div class="half">
+                        <div class="half1">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="countryx" placeholder="Enter country">
+                        </div>
+                        <div class="half2">
+                            <label for="price">Price</label>
+                            <input type="number" min="0" id="price" name="pricex" placeholder="Enter price">
+                        </div>
+                    </div>
+                    <label>Select interval</label>
+                        <div>
+                            <div class="radioxx"><input class="inxx" type="radio" name="per" value="night" id="night">
+                                <label for="night">One night</label></div>
+                            <div class="radioxx"><input class="inxx" type="radio" checked name="per" value="day" id="day">
+                                <label for="day">One day</label></div>
+                            <div class="radioxx"><input class="inxx"  type="radio" name="per" value="week" id="week">
+                                <label for="week">One Week</label></div>
+                                <div class="radioxx"><input class="inxx" type="radio" name="per" value="male" id="male">
+                                    <label for="male">One month</label></div>
+                                <div class="radioxx"><input class="inxx" type="radio" name="per" value="year" id="year">
+                                    <label for="year">One year</label></div>
+                        </div>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="locationx" placeholder="Enter locations">
+                    <label>Select filters</label>
+                    <div class="options">
+                        <input type="array" id="filters"   name="filters">
+                        <div class="opn addx sample" style="display:none">
+                            <div>Pools</div>
+                            <svg viewBox="0 0 384 512">
+                                <path stroke-width=""
+                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <label for="description">Description</label>
+                    <textarea name="descriptionx" id="description">This is a new area to explore</textarea>
+                    <div class="warn" >
+                        <svg viewBox="0 0 24 24" width="18" height="25" fill="red">
+                            <g>
+                                <path
+                                    d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm1-4a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0z">
+                                </path>
+                            </g>
+                        </svg>
+                        <div class="msg">Enter title</div>
+                    </div>
+                    <button class="clk" type="button" style="background-color: rgb(0, 0, 0);" >Uplode location</button>
+                </form>
+            </div>
+            <%-include("includes/foot.ejs")%>
+        </div>
+        <script src="/addnew.js"></script>
+</body>
+
+</html>
