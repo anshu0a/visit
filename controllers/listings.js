@@ -10,7 +10,7 @@ module.exports.home = async (req, res) => {
         state = "no";
     }
     const data = await listing.find({}).sort({ _id: -1 })
-    let fill;
+    let fill = false;
     res.render("home.ejs", { data, state,fill }); 
 
 }

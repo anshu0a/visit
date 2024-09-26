@@ -27,17 +27,15 @@ function checkScrollPosition() {
 }
 
 //_________________________________________________________submit form____________________________
-const kyachiyea = document.querySelector(".kyachiyea")
-const konsa= document.querySelector(".konsa");
+
 const filt= document.querySelectorAll(".filt");
 for(let xxv of filt){
 xxv.addEventListener("click",function(){
-   konsa.value = this.children[1].innerText;
    if(loader){
     loader.style.display = "flex";
         onx.innerText="Searching . . .";
    }
-   kyachiyea.submit();
+   window.location.replace(`/filters/${this.children[1].innerText}`);
 })
 }
 

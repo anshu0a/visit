@@ -152,7 +152,7 @@ app.post("/deleteReview",checkuser, wrap(reviewcontrol.deletereview));
 app.post("/logout", wrap(log_usercontrol.logoutt));
 // ______________________________________________________________filters___________________________________________________________________________
 
-app.post("/filters",wrap(filter.konsafilter));
+app.get("/filters/:filter",wrap(filter.konsafilter));
 // _________________________________________________________________all__________________________________________________________________
 
 app.all("*", (req, res, next) => {
