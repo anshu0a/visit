@@ -19,7 +19,7 @@ sx.addEventListener("click", function () {
     } else {
         topx.style.alignItems = "start"
         topx.style.transition = ".25s ease"
-        topx.style.height = "8rem"
+        topx.style.height = "128px"
         for (let i = 0; i < aa.childElementCount; i++) {
             aa.children[i].style.display = "flex";
         }
@@ -32,7 +32,7 @@ document.addEventListener('click', function (event) {
     if (!topx.contains(event.target) ) {
         console.log("hx")
         topx.style.alignItems = ""
-        topx.style.height = "3.5rem"
+        topx.style.height = "56px"
         for (let i = 0; i < aa.childElementCount; i++) {
             aa.children[i].style.display = "";
         }

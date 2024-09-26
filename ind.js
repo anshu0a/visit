@@ -27,6 +27,7 @@ app.listen(8080, () => {
     console.log("Express working...")
 });
 const monurl = process.env.ATLAS
+
 main().then(() => { console.log("Mongoose also Working...") }).catch((e) => { console.log(e) })
 async function main() {
     await mon.connect(monurl)

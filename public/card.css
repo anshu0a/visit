@@ -7,7 +7,7 @@ body {
 
 body>.bda {
     width: 100%;
-    height: calc(100vh - 3.5rem);
+    height: calc(100vh - 56px );
     overflow-y: scroll;
     position: fixed;
     bottom: 0px;
@@ -249,6 +249,7 @@ a {
     width: 50%;
     max-width: 300px;
     margin-top: 15vh;
+    fill:rgb(176, 176, 176)
 }
 
 .cover {
@@ -276,11 +277,14 @@ a {
     .cover {
         grid-template-columns: repeat(2, 1fr);
     }
+    .bda::-webkit-scrollbar {
+        display:none;
+    }
 }
 
 @media (max-width: 550px) {
     .cover {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);  
     }
 }
 

@@ -58,6 +58,10 @@ let listscma = new mond.Schema({
         type: String,
         default:"night"
     },
+    postdate:{
+        type:Date,
+        default:Date.now(),
+    }
 });
 
 
