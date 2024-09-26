@@ -10,26 +10,27 @@
     <link href="/card.css" rel="stylesheet">
 
 </head>
-
 <body>
     <div class="loader">
-        <div class="one">uploading . . .</div>
+        <div class="one">Loading . . .</div>
         <div class="waitt">It may take few seconds more,<br> while uploading you image</div>
+    </div>
+    <div class="outt">
+        <form class="common" action="/h" method="post" >
+            <p></p>
+            <input id="inp1" name="postid" type="text" hidden value="<%=data[0]._id%>">
+            <input id="inp2" name="who" type="text" hidden>
+            <input type="text" id="fn" hidden name="filename" value="<%=data[0].image[0].filename%>">
+            <input type="text" id="ul" hidden name="url" value="<%=data[0].image[0].url%>">
+            <div class="choose">
+                <button class="canx" type="button">Cancle</button>
+                <button class="dellx">Delete</button>
+            </div>
+        </form>
     </div>
     <%-include("includes/top.ejs")%>
         <div class="bda">
             <%-include("includes/filter.ejs")%>
-            <div class="outt">
-                <form class="notice" action="/deleteReview" method="post">
-                    <p>Are you sure wants to delete your review</p>
-                    <input id="postid" name="postid" type="text" hidden value="<%=data[0]._id%>">
-                    <input id="noticeid" name="who" type="text" hidden>
-                    <div class="choose">
-                        <button class="canx" type="button">Cancle</button>
-                        <button class="dellx">Delete</button>
-                    </div>
-                </form>
-            </div>
             <%if((error.length!==0) || (success.length!==0)){%>
                 <div class="flash">
                     <div class="<%if(success.length!==0){%>sucess<%}else if(error.length!==0){%>delet<%}else{%> <%}%>">
@@ -66,36 +67,41 @@
                     <div class="outer">
                         <div class="outimg">
                             <img class="imgx" src="<%=data[0].image[0].url%>">
+                            <% if((user.username===data[0].username) && (data[0].image.length>>>1)){%>
+                                <svg class="delonexx" viewBox="0 0 24 24" >
+                                    <path d="M18.87 6h1.007l-.988 16.015A1.051 1.051 0 0 1 17.84 23H6.158a1.052 1.052 0 0 1-1.048-.984v-.001L4.123 6h1.003l.982 15.953a.05.05 0 0 0 .05.047h11.683zM9.5 19a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-1 0v10a.5.5 0 0 0 .5.5zm5 0a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-1 0v10a.5.5 0 0 0 .5.5zM5.064 5H3V4h5v-.75A1.251 1.251 0 0 1 9.25 2h5.5A1.251 1.251 0 0 1 16 3.25V4h5v1H5.064zM9 4h6v-.75a.25.25 0 0 0-.25-.25h-5.5a.25.25 0 0 0-.25.25z"/>
+                                </svg>
+                                <%}%>
                         </div>
                         <div class="inner">
                             <div class="allinone">
                                 <%for(xx of data[0].image){%>
                                     <div class="outall">
+                                        <div style="display:none"><%=xx.filename%></div>
                                         <img class="allimx" src="<%=xx.url%>">
-                                        <% if(user.username===data[0].username){%>
-                                        <img class="delonexx" src="/img/trash.svg">
-                                        <form action="/deleteonepost/<%=data[0]._id%>" method="post" class="deleteonepost">
-                                            <input type="text" name="filename" hidden value="<%=xx.filename%>">
-                                            <input type="text" name="url" hidden value="<%=xx.url%>">
-                                        </form>
-                                        <%}%>
+                                        
                                     </div>
                                     <%}%>
                             </div>
                             <p style="font-size: 17px;color:rgb(29, 0, 0)">
                                 <%=data[0].description%>
                             </p>
-                            <p><b>Location : </b>
+                            <p><b>Location </b>
                                 <%=data[0].location%>
                             </p>
-                            <p><b>Country : </b>
+                            <p><b>Country </b>
                                 <%=data[0].country%>
                             </p>
-                            <p><b>Price : </b> &#8377;<%=data[0].price.toLocaleString("en-IN")%>/<%=data[0].long%></p>
+                            <p><b>Price </b> &#8377;<%=data[0].price.toLocaleString("en-IN")%>/<%=data[0].long%></p>
 
-                            <p><b>Owner : </b>
+                            <p><b>Owner </b>
                                 <%=data[0].username%>
                             </p>
+                            <b>Features</b>
+                            
+                            <div class="dekho">
+                                <div class="re ree" style="display:none"><%= data[0].filters%></div>
+                            </div>
                         </div>
                     </div>
 
@@ -158,16 +164,7 @@
                                             <%=rr.name%>
                                         </div>
                                     </div>
-                                    <svg width="24" viewBox="0 0 24 24">
-                                        <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round"
-                                            stroke-width="2" x1="20" x2="20" y1="6" y2="6"></line>
-                                        <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round"
-                                            stroke-width="2" x1="20" x2="20" y1="12" y2="12"></line>
-                                        <line fill="none" stroke="black" stroke-linecap="round" stroke-libejoin="round"
-                                            stroke-width="2" x1="20" x2="20" y1="18" y2="18"></line>
-                                    </svg>
-                                </div><br>
-                                <% let ow=rr.rating%>
+                                    <% let ow=rr.rating%>
                                     <div>
                                         <%for(let i=0; i < ow;i++){%>
                                             <svg class="star" viewBox="0 0 576 512">
@@ -182,6 +179,7 @@
                                                     </svg>
                                                     <%}%>
                                     </div>
+                                </div><br>
                                     <textarea class="comment" readonly><%=rr.comment%></textarea>
                                     <div class="ft">
                                         <p style="color:rgb(147, 147, 147);font-size: 13px; font-size: 15px;">
@@ -206,5 +204,8 @@
                         <script src="/card.js" defer></script>
         </div>
 </body>
-
 </html>
+<script>
+    let loader = document.querySelector(".loader");
+    loader.style.display = "none";
+</script>

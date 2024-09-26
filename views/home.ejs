@@ -82,8 +82,9 @@
                     </li>
                 </ul>
                 <%}%> -->
-            <%-include("includes/foot.ejs")%>
-            
+                <%if(!data.length==0){%>
+                    <%-include("includes/foot.ejs")%>
+                    <%}%>
             </div>
             <script src="/home.js" defer></script>
 </body>

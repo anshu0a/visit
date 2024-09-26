@@ -24,22 +24,24 @@ sx.addEventListener("click", function () {
             aa.children[i].style.display = "flex";
         }
         open = true;
+        document.addEventListener('click',hf );
 
     }
 })
 
-document.addEventListener('click', function (event) {
+let hf= function (event) {
     if (!topx.contains(event.target) ) {
-        console.log("hx")
         topx.style.alignItems = ""
         topx.style.height = "56px"
         for (let i = 0; i < aa.childElementCount; i++) {
             aa.children[i].style.display = "";
         }
         open = false;
+        setTimeout(()=>{document.removeEventListener('click',hf );},210)
     }
 
-});
+}
+
 
 //__________________________________________________ logout_____________________________________________________
 let logoutform = document.querySelector(".logoutform")

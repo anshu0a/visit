@@ -1,30 +1,56 @@
 
-const icon = document.querySelectorAll(".dell")
+
+
+
+const icon = document.querySelectorAll(".dell");
 const cancel = document.querySelector(".canx")
 const outt = document.querySelector(".outt")
-const body = document.querySelector("body")
-const noticeid = document.querySelector("#noticeid")
+const common = document.querySelector(".common")
+const inp1 = document.querySelector("#inp1")
+const inp2 = document.querySelector("#inp2")
+const fn = document.querySelector("#fn")
+const ul = document.querySelector("#ul")
+
+
 for (icx of icon) {
     icx.addEventListener("click", function () {
-        noticeid.value = this.getAttribute("class").slice(5)
+        common.removeChild(fn);
+        common.removeChild(ul);
+        inp2.value = this.getAttribute("class").slice(5);
         outt.style.display = "flex";
-        body.style.overflow = "hidden";
+        common.children[0].innerHTML="Are you sure!<br> for <b>deleting</b> your review"
+        common.action = '/deleteReview';
+        loader.children[0].innerText = "Removing review . . .";
+        
     });
 };
-cancel.addEventListener("click", () => {
-    noticeid.value = ""
-    body.style.overflow = "";
-    outt.style.display = "";
-});
-const deleteonebtn = document.querySelectorAll(".delonexx")
-for (icx of deleteonebtn) {
-    icx.addEventListener("click", function () {
 
-loader.style.display = "flex"
-loader.innerText="Removing . . ."
-        this.nextElementSibling.submit();
+common.addEventListener("submit",()=>{
+    
+    loader.style.display = "flex"; 
+    outt.style.display = "none";
+})
+
+cancel.addEventListener("click", () => {  
+    outt.style.display = "none";
+});
+
+// _________________________________________________________________delete one img__________________________________________----------
+
+const deleteonebtn = document.querySelector(".delonexx")
+
+if(deleteonebtn){
+    deleteonebtn.addEventListener("click", function () {
+        common.removeChild(inp1);
+        common.removeChild(inp2);
+         outt.style.display = "flex";
+         common.children[0].innerHTML="Are you sure! <br> picture can't <b>restore</b> in future ";
+        common.action = `/deleteonepost/${inp1.value}`;
+        loader.children[0].innerText = "Removing picture . . .";
+        
     });
-};
+    
+}
 
 
 // ________________________________________________flash_____________________________________
@@ -32,13 +58,13 @@ const cutt = document.querySelector(".successCut");
 if (cutt) {
     const flash = document.querySelector(".flash");
     flash.style.transition = ".5s ease"
-    
-    flash.style.opacity = "1";
-    setTimeout(()=>{
-        flash.style.opacity="0"
-        setTimeout(()=>{flash.style.display="none"},500);
 
-    },3000)
+    flash.style.opacity = "1";
+    setTimeout(() => {
+        flash.style.opacity = "0"
+        setTimeout(() => { flash.style.display = "none" }, 500);
+
+    }, 3000)
 
     function fx() {
         this.parentElement.parentElement.style.display = "none";
@@ -57,14 +83,14 @@ const formofimg = document.querySelector(".addmoreimg")
 
 let isimg = false;
 
-actimg.addEventListener("change",()=>{
-    if(actimg.value.length===0){
-        outimage.style.display="none"
-        outimage.children[1].src="";
-        outimage.style.display="none"
-        save.style.display="none"
-        btn.style.display="flex"
-    }else{
+actimg.addEventListener("change", () => {
+    if (actimg.value.length === 0) {
+        outimage.style.display = "none"
+        outimage.children[1].src = "";
+        outimage.style.display = "none"
+        save.style.display = "none"
+        btn.style.display = "flex"
+    } else {
         const file = actimg.files[0];
         if (file) {
             const reader = new FileReader();
@@ -73,83 +99,45 @@ actimg.addEventListener("change",()=>{
             }
             reader.readAsDataURL(file)
         }
-        outimage.style.display="flex"
-            save.style.display="flex"
-            btn.style.display="none"
-    
+        outimage.style.display = "flex"
+        save.style.display = "flex"
+        btn.style.display = "none"
+
     }
 })
 
 
-cutoption.addEventListener("click",function(){
-    outimage.style.display="none"
-    save.style.display="none"
-    btn.style.display="flex"
-    outimage.children[1].src="";
-    actimg.value="";
+cutoption.addEventListener("click", function () {
+    outimage.style.display = "none"
+    save.style.display = "none"
+    btn.style.display = "flex"
+    outimage.children[1].src = "";
+    actimg.value = "";
 
 })
 
 
 // _____________________________________________________________laodaer on save____________________________
-let loader = document.querySelector(".loader");
+
 let onx = document.querySelector(".one");
 let waitt = document.querySelector(".waitt");
 let no = 0;
 let no2 = 0
 
-save.addEventListener("click",()=>{
+save.addEventListener("click", () => {
     loader.style.display = "flex"
-    // const idx = setInterval(() => {
-        
-    //     if (no2 == 3) {
-    //         waitt.style.display = "flex"
-    //     } else if (no2 == 10) {
-    //         no2 = 0
-    //         clearInterval(idx)
-    //     }
-
-
-    //     if (no === 0) {
-    //         console.log(no)
-    //         vbfg.innerHtml="uploading"
-    //         no++;
-    //     } else if (no === 1) {console.log(no)
-    //         vbfg.innerHtml="uploading . .";
-    //         no++;
-
-    //     } else if (no === 2) {console.log(no)
-    //         vbfg.innerHtml="uding . . .";
-    //         no++;
-
-    //     } else if (no === 3) {console.log(no)
-    //         no++;
-    //     }  else if (no === 4) {console.log(no)
-    //         vbfg.innerHtml="uploading . . ";
-    //         no++;
-
-    //     } else if (no === 5) {console.log(no)
-    //         vbfg.innerHtml="uploading . ";
-    //         no++;
-
-    //     }else {console.log(no)
-    //         vbfg.innerHtml="uploading";
-    //         no = 0;
-    //         no2++
-    //     }
-    // }, 500);
-formofimg.submit();
+    formofimg.submit();
 })
 // _____________________________________________________delete post ______________________________________
 
-const button= document.querySelector(".button");
+const button = document.querySelector(".button");
 
-if(button){
-    button.addEventListener("click",function(){
+if (button) {
+    button.addEventListener("click", function () {
         loader.style.display = "flex"
-        onx.innerText="Deleating . . ."
-    this.parentElement.submit();
-})
+        onx.innerText = "Deleating . . ."
+        this.parentElement.submit();
+    })
 }
 // _______________________________________________________boundary of small img_____________________________________
 
@@ -168,33 +156,40 @@ const bigdata = document.querySelector(".allinone")
 const sendimg = document.querySelector(".sndimgv")
 
 
-if(bigdata.childElementCount==1){
-    bigdata.style.display="none"
-}else if(bigdata.childElementCount>>10){
-    sendimg.style.display="none"
+if (bigdata.childElementCount == 1) {
+    bigdata.style.display = "none"
+} else if (bigdata.childElementCount >> 10) {
+    sendimg.style.display = "none"
 
 }
 
-function firse(){
-    for(vbfg of allhu){
- vbfg.style.opacity="1";
-if(vbfg.nextElementSibling){
-     vbfg.nextElementSibling.style.display="none"
-}
+function firse() {
+    for (vbfg of allhu) {
+        vbfg.style.opacity = "1";
+        vbfg.style.cursor="pointer"
     }
 }
-for(vbfg of allhu){
-vbfg.addEventListener("click",function(){
-    firse()
-    this.style.opacity=".5"
-   myDiv.src = this.src;
-   if(this.nextElementSibling){
-    setTimeout(()=>{this.nextElementSibling.style.display="flex"},200)
-   }
+for (vbfg of allhu) {
+    vbfg.addEventListener("click", function () {
+        firse()
+        this.style.opacity = ".5"
+        this.style.cursor="no-drop"
+        myDiv.src = this.src;
+        ul.value = this.src;
+        fn.value = this.previousElementSibling.innerText
+        
 
-})
+    })
 }
-
+// ___________________________________________________________________________________
+const re = document.querySelector(".ree")
+const feature = re.innerText.split(',').map(item => item.trim()); 
+for(fe of feature){
+let newp = document.createElement("div")
+newp.setAttribute("class","re")
+newp.innerText= fe;
+re.parentElement.appendChild(newp)
+}
 // ______________________________________________________rating star_______________________________________
 
 const ratingbox = document.querySelectorAll(".sttar");
@@ -229,6 +224,6 @@ for (let rrx of ratingbox) {
                 }
             }
         }
-        star.value=rrx.getAttribute("class").slice(9);
+        star.value = rrx.getAttribute("class").slice(9);
     })
 }
