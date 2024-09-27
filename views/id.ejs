@@ -11,6 +11,7 @@
 
 </head>
 <body>
+    
     <div class="loader">
         <div class="one">Loading . . .</div>
         <div class="waitt">It may take few seconds more,<br> while uploading you image</div>
@@ -151,7 +152,7 @@
                                 <%}%>
                         </div>
                         <br><textarea name="comment" required placeholder="Leave a comment..."></textarea>
-                        <br><button>Submit</button>
+                        <br><button class="suu" type="button">Submit</button>
                     </form>
                     <div class="showrev">
                         <%for( rr of data[0].reviews){%>
@@ -179,11 +180,31 @@
                                                     </svg>
                                                     <%}%>
                                     </div>
-                                </div><br>
-                                    <textarea class="comment" readonly><%=rr.comment%></textarea>
+                                </div>
+                                    <div class="comment" readonly><%=rr.comment%></div>
                                     <div class="ft">
-                                        <p style="color:rgb(147, 147, 147);font-size: 13px; font-size: 15px;">
-                                            <%= rr.when.toLocaleTimeString()%>&nbsp; (<%=rr.when.toLocaleDateString()%>)
+                                        <% const createdAt = new Date(rr.when); %>
+                                        <% const nows = new Date(); %>
+                                        <% const milli = nows - rr.when; %>
+                                        <% const sec = Math.floor(milli / (1000 )); %>
+                                        <% const min = Math.floor(sec / (60)); %>
+                                        <% const hr = Math.floor(min / (60)); %>
+                                        <% const day = Math.floor(hr / (24)); %>
+                                        <% const years = Math.floor(day / 365); %>
+                                        <p>
+                                            <%if(milli<60){%>
+                                                just now
+                                                <%}else if(sec<60){%>
+                                                <%=sec%> seconds ago
+                                                <%}else if(min<60){%>
+                                                    <%=min%> minuts ago
+                                                    <%}else if(hr<24){%>
+                                                        <%=hr%> hour ago
+                                                        <%}else if(day<365){%>
+                                                            <%=day%> days ago
+                                                            <%}else{%>
+                                                                <%=years%> Year ago
+                                                                <%}%>
                                         </p>
                                         <%if(user.username===rr.name){%>
                                         <svg class="dell <%=rr._id%>" width="13" fill="rgb(150,150,150)"

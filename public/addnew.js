@@ -63,7 +63,7 @@ for (xxv of opn) {
 
 
 //___________________________________________________________________________check valid or not____________________________________________
-const loader = document.querySelector(".loader");
+
 const fm = document.querySelector(".form");
 const xtitle = document.querySelector("#titlex");
 const xcountry = document.querySelector("#country");

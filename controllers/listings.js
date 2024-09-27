@@ -11,7 +11,7 @@ module.exports.home = async (req, res) => {
     }
     const data = await listing.find({}).sort({ _id: -1 })
     let fill = false;
-    res.render("home.ejs", { data, state,fill }); 
+    res.render("home.ejs", { data, state, fill });
 
 }
 
@@ -21,7 +21,7 @@ module.exports.onecard = async (req, res) => {
         let { id } = req.params;
         const data = await listing.find({ _id: id }).populate("reviews");
         const fill = "none";
-        res.render("id.ejs", { data, user: req.user, state: "yes",fill });
+        res.render("id.ejs", { data, user: req.user, state: "yes", fill });
     } catch (err) {
         if (err.message.includes("Cast to ObjectId failed for value")) {
             req.flash("del", "Unavaliable post trying to reach");
@@ -32,12 +32,12 @@ module.exports.onecard = async (req, res) => {
 
 module.exports.newpost = async (req, res, next) => {
 
-    let { titlex, pricex, descriptionx, locationx, countryx, urlx, filenamee,filters,per } = req.body
+    let { titlex, pricex, descriptionx, locationx, countryx, urlx, filenamee, filters, per } = req.body
     if (req.file) {
         urlx = req.file.path;
         filenamee = req.file.filename;
     }
-    if (!titlex || !pricex || !descriptionx || !locationx || !countryx||!filters||!per) {
+    if (!titlex || !pricex || !descriptionx || !locationx || !countryx || !filters || !per) {
         throw new expresserr(400, "Somthing is missing in your form")
     }
     let sv = await new listing({
@@ -47,13 +47,13 @@ module.exports.newpost = async (req, res, next) => {
         description: `${descriptionx}`,
         location: `${locationx}`,
         country: `${countryx}`,
-        image: [{  filename: `${filenamee}`,  url: `${urlx}` }],
-        long:`${per}`
+        image: [{ filename: `${filenamee}`, url: `${urlx}` }],
+        long: `${per}`
     });
 
     const filterx = filters.split(',').map(item => item.trim());
-    for(filt of filterx){
-       await sv.filters.push(`${filt}`);
+    for (filt of filterx) {
+        await sv.filters.push(`${filt}`);
     }
     await sv.save();
     req.flash("success", "New post created")
@@ -71,8 +71,8 @@ module.exports.showedit = async (req, res) => {
 }
 module.exports.doedit = async (req, res) => {
     try {
-        
-        if (!req.body.titlex || !req.body.pricex || !req.body.descriptionx || !req.body.locationx || !req.body.countryx||!req.body.filters) {
+
+        if (!req.body.titlex || !req.body.pricex || !req.body.descriptionx || !req.body.locationx || !req.body.countryx || !req.body.filters) {
             throw new expresserr(400, "Somthing is missing in your Edit request")
         }
         let postt = await listing.findByIdAndUpdate(`${req.params.id}`, {
@@ -82,22 +82,22 @@ module.exports.doedit = async (req, res) => {
             description: `${req.body.descriptionx}`,
             location: `${req.body.locationx}`,
             country: `${req.body.countryx}`,
-            filters:[],
-            
+            filters: [],
+
         })
         if (req.file) {
             const urll = req.file.path;
             const filenamee = req.file.filename;
 
             await listing.findByIdAndUpdate(`${req.params.id}`,
-                { $push: { image: {filename:`${filenamee}` ,  url: `${urll}`, } } }
-              );
-         }
-         const filterx = req.body.filters.split(',').map(item => item.trim());
-         for(filt of filterx){
+                { $push: { image: { filename: `${filenamee}`, url: `${urll}`, } } }
+            );
+        }
+        const filterx = req.body.filters.split(',').map(item => item.trim());
+        for (filt of filterx) {
             await postt.filters.push(`${filt}`);
-         }
-          await postt.save();
+        }
+        await postt.save();
         req.flash("success", "Post Edited Successfully")
         res.redirect(`/listing/${req.params.id}`);
     } catch (err) {
@@ -106,30 +106,30 @@ module.exports.doedit = async (req, res) => {
     }
 }
 
-module.exports.deleteonepic= async(req,res)=>{
-   try{
-    if (req.body.filename !== "undefined") {
-        await removeimage(req.body.filename);
-    }
-    await listing.findByIdAndUpdate(`${req.params.id}`,
-        { $pull: { image: {filename:`${req.body.filename}` ,  url: `${req.body.url}`, } } }
-      );
-      req.flash("success", `Image removed from your post`);
+module.exports.deleteonepic = async (req, res) => {
+    try {
+        if (req.body.filename !== "undefined") {
+            await removeimage(req.body.filename);
+        }
+        await listing.findByIdAndUpdate(`${req.params.id}`,
+            { $pull: { image: { filename: `${req.body.filename}`, url: `${req.body.url}`, } } }
+        );
+        req.flash("success", `Image removed from your post`);
         res.redirect(`/listing/${req.params.id}`);
-   }catch (err) {
-    console.log(err)
-    req.flash("error", `${err}`);
-    res.redirect(`/listing/${req.params.id}`);
-}
+    } catch (err) {
+        console.log(err)
+        req.flash("error", `${err}`);
+        res.redirect(`/listing/${req.params.id}`);
+    }
 
 }
 module.exports.newimg = async (req, res) => {
     try {
         if (req.file) {
-              
-              const postt = await listing.findByIdAndUpdate(`${req.params.id}`,
-                { $push: { image: {filename: `${req.file.filename}`,  url: `${req.file.path}`, } } }
-              );
+
+            const postt = await listing.findByIdAndUpdate(`${req.params.id}`,
+                { $push: { image: { filename: `${req.file.filename}`, url: `${req.file.path}`, } } }
+            );
             await postt.save();
         }
         req.flash("success", "Image saved successfully")
@@ -159,11 +159,11 @@ module.exports.deletepost = async (req, res) => {
     try {
         let { id } = req.params;
         let del = await listing.findOneAndDelete({ _id: `${id}` });
-        for (let xxg of del.image){
+        for (let xxg of del.image) {
             if (xxg.filename !== "undefined") {
                 await removeimage(xxg.filename);
-            } 
-            
+            }
+
         }
         req.flash("success", "Post Deleted Successfully")
         res.redirect("/home")

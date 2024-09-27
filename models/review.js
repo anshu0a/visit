@@ -11,7 +11,7 @@ const reviewschema = new schema({
     },
     when:{
         type:Date,
-        default:Date.now() 
+        default:Date.now,
     }
 })
 module.exports = mong.model("Review",reviewschema);

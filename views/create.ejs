@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div class="loader" style="display:flex"></div>
+        <div class="one">Loading . . .</div>
+    </div>
     <h1 style="color:rgb(255, 0, 170)">New Account</h1>
     <%if(error.length!==0){%>
         <div class="flash">
@@ -50,5 +53,8 @@
         </div>
             <script src="create.js"></script>
 </body>
-
 </html>
+<script>
+    let loader = document.querySelector(".loader");
+    loader.style.display = "none"
+    </script>

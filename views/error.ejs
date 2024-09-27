@@ -6,6 +6,9 @@
     <title>Error</title>
     <link rel="stylesheet" href="/err.css"></link>
 </head>
+<div class="loader" style="display:flex"></div>
+    <div class="one">Loading . . .</div>
+</div>
 <body  <%if(message==="page not found!"){%>style="background-color: rgb(255, 249, 237);"<%}%>>
     <div class="box">
         <img src="/img/<%if(message==="page not found!"){%>not.jpg<%}else if(message==="Somthing is missing in your Edit request"){%>edit.jpg<%}else if(message==="Somthing is missing in your Creation request"){%>crt.jpg<%}else{%>err.jpeg<%}%>">
@@ -17,3 +20,7 @@
     </script>
 </body>
 </html>
+<script>
+    let loader = document.querySelector(".loader");
+    loader.style.display = "none"
+    </script>

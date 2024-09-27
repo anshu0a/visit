@@ -61,6 +61,10 @@ let listscma = new mond.Schema({
     postdate:{
         type:Date,
         default:Date.now(),
+    },
+    when:{
+        type:Date,
+        default:Date.now,
     }
 });
 

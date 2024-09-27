@@ -24,7 +24,7 @@ actimg.addEventListener("change", () => {
 })
 
 // _________________________________________________submit___________________________________________________
-const loader = document.querySelector(".loader");
+
 const fm = document.querySelector(".form");
 const xtitle = document.querySelector("#tit");
 const xcountry = document.querySelector("#cou");

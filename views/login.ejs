@@ -7,6 +7,9 @@
     <link href="card.css" rel="stylesheet">
 </head>
 <body class="loginbody">
+    <div class="loader" >
+        <div class="one">Loading . . .</div>
+    </div>
     <form action="/login" method="post" class="login">
         <%if(error.length!==0){%>
             <div class="flash" >
@@ -27,7 +30,7 @@
         <label for="username">Username:</label>
         <input type="text" id="username" spellcheck="false" name="username" autocomplete="username" placeholder="Enter Username...">
         <label for="pass">Password:</label>
-        <input type="text" id="pass"  name="password" placeholder="Enter Password...">
+        <input type="password" id="pass" autocomplete="current-password" name="password" placeholder="Enter Password...">
         <div class="outmsg" style="display:none">
             <svg viewBox="0 0 24 24" width="18" height="25" fill="red">
                 <g>
@@ -47,4 +50,7 @@
     
 </body>
 </html>
-
+<script>
+    let loader = document.querySelector(".loader");
+    loader.style.display = "none"
+</script>

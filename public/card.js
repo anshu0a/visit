@@ -227,3 +227,28 @@ for (let rrx of ratingbox) {
         star.value = rrx.getAttribute("class").slice(9);
     })
 }
+
+// ________________________________________________________----review submit_________________________________------
+const suu = document.querySelector(".suu")
+suu.addEventListener("click",function(){
+    if(this.parentElement.children[4].value.trim()===""){
+        this.parentElement.children[4].style.border="1px solid red"
+        this.parentElement.children[4].value=""
+    }else{
+        loader.style.display="flex";
+        loader.children[0].innerText="Review posting . . ."
+        this.parentElement.submit();
+    }
+})
+
+// ________________________________________________________click filters____________________________________________
+const fi= document.querySelectorAll(".dekho");
+for(let xxv of fi){
+xxv.addEventListener("click",function(){
+   if(loader){
+    loader.style.display = "flex";
+        onx.innerText="Searching . . .";
+   }
+   window.location.href=`/filters/${this.children[1].innerText}`;
+})
+}
