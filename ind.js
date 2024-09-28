@@ -158,6 +158,9 @@ app.get("/filters/:filter",checkuser,wrap(filter.konsafilter));
 // _________________________________________________________________like________________________________________----
 app.post("/like/:id",checkuser, wrap(log_usercontrol.like));
 app.get("/fav",checkuser,wrap(log_usercontrol.fav));
+
+// __________________________________________________search according to name_________________________
+app.get("/post/:namex",checkuser,wrap(listingcontrol.byname));
 // _________________________________________________________________all__________________________________________________________________
 
 app.all("*", (req, res, next) => {

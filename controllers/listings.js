@@ -176,3 +176,25 @@ module.exports.deletepost = async (req, res) => {
     }
 
 }
+module.exports.byname = async (req, res) => {
+
+    try {
+        let name = req.params.namex
+        let data = await listing.find({username:`${name}`});
+        if(data){
+            if (await req.isAuthenticated()) {
+                state = req.user;
+            } else {
+                state = "no";
+            }
+            let fill=false;
+            res.render("home.ejs", { data, state,fill });
+        }else{
+            res.redirect("/home");
+        }
+    } catch (ee){
+        req.flash("del", "Error");
+        res.redirect("/home");
+    }
+
+}

@@ -33,7 +33,7 @@ for(let xxv of filt){
 xxv.addEventListener("click",function(){
    if(loader){
     loader.style.display = "flex";
-        loader.children[0].innerText="Searching . . .";
+        loader.children[0].innerText=`Searching filter ${this.children[1].innerText} . . .`;
    }
    window.location.replace(`/filters/${this.children[1].innerText}`);
 })

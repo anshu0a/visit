@@ -188,7 +188,7 @@ for(fe of feature){
 let newp = document.createElement("div")
 newp.setAttribute("class","re")
 newp.innerText= fe;
-re.parentElement.appendChild(newp)
+re.parentElement.appendChild(newp);
 }
 // ______________________________________________________rating star_______________________________________
 
@@ -242,13 +242,14 @@ suu.addEventListener("click",function(){
 })
 
 // ________________________________________________________click filters____________________________________________
-const fi= document.querySelectorAll(".dekho");
+const fi= document.querySelectorAll(".re");
 for(let xxv of fi){
 xxv.addEventListener("click",function(){
-   if(loader){
+
+if(loader){
     loader.style.display = "flex";
-        onx.innerText="Searching . . .";
-   }
-   window.location.href=`/filters/${this.children[1].innerText}`;
+    onx.innerText=`Searching filter ${this.innerText}. . .`;
+}
+   window.location.href=`/filters/${this.innerText}`;
 })
 }

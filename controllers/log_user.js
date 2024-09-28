@@ -11,7 +11,10 @@ module.exports.login = (req, res) => {
 }
 module.exports.register = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const username = req.body.username.trim();
+        const email = req.body.email.trim();
+        const password = req.body.password.trim();
+
         const newUser = new User({ username, email });
         const loguse = await User.register(newUser, password);
         req.login(loguse, (err) => {
