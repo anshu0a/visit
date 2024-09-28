@@ -7,12 +7,12 @@ module.exports.doreview = async (req, res) => {
     let newreview = new Review({
         name: req.user.username,
         comment: req.body.comment,
-        rating: req.body.star
+        rating: req.body.star 
     })
     postt.reviews.push(newreview);
     await newreview.save();
     await postt.save();
-    req.flash("success", "Your Review Added Successfully")
+    req.flash("success", "Your Review Added Successfully");
     res.redirect(`/listing/${id}`)
 }
 module.exports.deletereview = async (req, res) => {

@@ -6,7 +6,13 @@ const userSchema = new Schema({
     email:{
         type:String,
         required:true
-    }
+    },
+    likes: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "listing"
+        }
+    ],
 
 })
 userSchema.plugin(passlocalmon) 

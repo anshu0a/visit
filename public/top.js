@@ -11,7 +11,7 @@ sx.addEventListener("click", function () {
     setTimeout(() => { sv.style.width = "" }, 100);
     if (open) {
         topx.style.alignItems = ""
-        topx.style.height = "3.5rem"
+        topx.style.height = "56px"
         for (let i = 0; i < aa.childElementCount; i++) {
             aa.children[i].style.display = "";
         }
@@ -19,7 +19,7 @@ sx.addEventListener("click", function () {
     } else {
         topx.style.alignItems = "start"
         topx.style.transition = ".25s ease"
-        topx.style.height = "128px"
+        topx.style.height = "168px"
         for (let i = 0; i < aa.childElementCount; i++) {
             aa.children[i].style.display = "flex";
         }

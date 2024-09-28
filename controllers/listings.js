@@ -5,12 +5,13 @@ const { removeimage } = require("../cloudconfig.js")
 module.exports.home = async (req, res) => {
     let state;
     if (req.isAuthenticated()) {
-        state = "yes";
+        state = req.user;
     } else {
         state = "no";
     }
     const data = await listing.find({}).sort({ _id: -1 })
     let fill = false;
+   
     res.render("home.ejs", { data, state, fill });
 
 }
@@ -21,9 +22,11 @@ module.exports.onecard = async (req, res) => {
         let { id } = req.params;
         const data = await listing.find({ _id: id }).populate("reviews");
         const fill = "none";
+        res.set('Cache-Control', 'no-store');
         res.render("id.ejs", { data, user: req.user, state: "yes", fill });
     } catch (err) {
         if (err.message.includes("Cast to ObjectId failed for value")) {
+
             req.flash("del", "Unavaliable post trying to reach");
             res.redirect("/home");
         }

@@ -96,6 +96,8 @@ app.use((req, res, next) => {
     res.locals.del = req.flash("del"); 
     res.locals.edit = req.flash("edit");
     res.locals.error = req.flash("error");
+    req.locals = req.locals || {};
+    req.locals.previousUrl = null;
     next();
 });
 
@@ -131,7 +133,7 @@ app.get("/crt",checkuser,async (req, res) => {
 })
  app.post("/new",checkuser,upload.single("actimg"), wrap(listingcontrol.newpost));
 
- app.post("/addmoreimg/:id",checkuser,upload.single("iimmgg"), wrap(listingcontrol.newimg))
+ app.post("/addmoreimg/:id",checkuser,upload.single("iimm"), wrap(listingcontrol.newimg))
 
 // _________________________________________________________________edit__________________________________________________________________
 
@@ -152,7 +154,10 @@ app.post("/deleteReview",checkuser, wrap(reviewcontrol.deletereview));
 app.post("/logout", wrap(log_usercontrol.logoutt));
 // ______________________________________________________________filters___________________________________________________________________________
 
-app.get("/filters/:filter",wrap(filter.konsafilter));
+app.get("/filters/:filter",checkuser,wrap(filter.konsafilter));
+// _________________________________________________________________like________________________________________----
+app.post("/like/:id",checkuser, wrap(log_usercontrol.like));
+app.get("/fav",checkuser,wrap(log_usercontrol.fav));
 // _________________________________________________________________all__________________________________________________________________
 
 app.all("*", (req, res, next) => {

@@ -1,3 +1,4 @@
+window.history.replaceState(null, document.title, window.location.href);
 //___________________________________________________flash_________________________________
 const cutt = document.querySelector(".hide");
 const swit = document.querySelector(".swit");

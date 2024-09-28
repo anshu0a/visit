@@ -1,3 +1,4 @@
+window.history.replaceState(null, document.title, window.location.href);
 //____________________________________________show all filter 
 const whole = ['Pools', 'Farms', 'Beachs','Secure','Parking','Fresh area', 'Lakes', 'Castles','Tour', 'Rooms', 'Warehouse',  'Tree house', 'Camping', 'Mountain', 'Games', 'Cave', 'Skiings', 'House boat', 'Tower', 'Under sea', 'Space', 'Camper van', 'Snow']
 const sample = document.querySelector(".sample")

@@ -1,4 +1,9 @@
 
+    // window.history.pushState(null, document.title, window.location.href);
+    // window.addEventListener('popstate', function () {
+    //     window.history.pushState(null, document.title, window.location.href);
+    // });
+
 //___________________________________________________flash_________________________________
 
 const cutt = document.querySelector(".successCut");
@@ -19,7 +24,22 @@ if (cutt) {
     cutt.addEventListener("click", fx)
 }
 
-// ___________________________________________________________loader
+// ________________________________________________________like______________________________
 
-let onx = document.querySelector(".one");
+const clklike = document.querySelector(".likemex");
+let bbtt = document.querySelectorAll(".kk");
+for(lik of bbtt){
+lik.addEventListener("click",function(){
+    clklike.action=this.parentElement.children[0].innerText;
+    if(this.getAttribute("class").slice(0 , -3)==="hai"){
+loader.children[0].innerText="Removing from wishlist . . ."
+    loader.style.display="flex"
+    }else{
+        loader.children[0].innerText="Adding to wishlist . . ."
+    loader.style.display="flex"
+    }
+    clklike.submit();
+
+})
+}
 

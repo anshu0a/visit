@@ -33,7 +33,7 @@ for(let xxv of filt){
 xxv.addEventListener("click",function(){
    if(loader){
     loader.style.display = "flex";
-        onx.innerText="Searching . . .";
+        loader.children[0].innerText="Searching . . .";
    }
    window.location.replace(`/filters/${this.children[1].innerText}`);
 })

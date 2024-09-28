@@ -44,27 +44,20 @@ let listscma = new mond.Schema({
             ref: "Review"
         }
     ],
-    filters:[],
-    likes: {
-        type: [{
-            name: {
-                type: String
-            },
-            _id: false,
-        }],
-        default: []
-    },
+    filters: [],
+    likes: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
     long: {
         type: String,
-        default:"night"
+        default: "night"
     },
-    postdate:{
-        type:Date,
-        default:Date.now(),
-    },
-    when:{
-        type:Date,
-        default:Date.now,
+    when: {
+        type: Date,
+        default: Date.now,
     }
 });
 

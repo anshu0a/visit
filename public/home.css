@@ -36,7 +36,7 @@ li a {
     width: 100%;
     height: 56px;
     margin: 0;
-    background-color: rgba(246, 246, 246, 0.95);
+    background-color: rgba(255, 255, 255, 0.836);
 }
 
 .pre {
@@ -80,6 +80,9 @@ li a {
     justify-content: center;
     align-items: center;
 }
+.aa a>div{
+    display:none;
+}
 a div{
     padding-bottom: 3px;
 }
@@ -122,7 +125,9 @@ a div{
         width: 30%;
         justify-content: flex-start;
     }
-
+    .aa a>div{
+        display:flex;
+    }
     .top .sx,
     .pre h3 {
         display: flex;
@@ -139,7 +144,7 @@ a div{
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    background-color: rgb(93, 93, 93);
+    background-color: rgb(46, 46, 46);
     padding: 20px 0;
     max-width:100%;
 }

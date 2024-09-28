@@ -9,10 +9,10 @@ body>.bda {
     width: 100%;
     overflow-y: scroll;
     position: fixed;
-    top:56px;
+    top: 56px;
     left: 0px;
     right: 0px;
-    bottom:0;
+    bottom: 0;
 
 }
 
@@ -158,9 +158,12 @@ a {
     background-color: #ffffff;
 
 }
-.left,.right{
-    display:flex
+
+.left,
+.right {
+    display: flex
 }
+
 .left {
     transition: .2s ease;
     visibility: hidden;
@@ -196,7 +199,7 @@ a {
     gap: 5px;
     overflow: scroll;
     overflow-y: hidden;
-    padding: 10px ;
+    padding: 10px;
     border-radius: 10px;
     scroll-snap-type: x mandatory;
 
@@ -250,12 +253,12 @@ a {
 /* ______________________________________________________card____________________________________________ */
 .noimg {
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50% , -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 50%;
     max-width: 300px;
-    fill:rgb(176, 176, 176)
+    fill: rgb(176, 176, 176)
 }
 
 .cover {
@@ -272,22 +275,21 @@ a {
 }
 
 .outcard {
+    position: relative;
     transition: .2s ease-in-out;
     width: 100%;
     border-radius: 12px;
     color: rgb(146, 146, 146);
 }
 
-
 .outcard:hover {
-    z-index: 0;
     box-shadow: 1px 1px 15px rgb(131, 131, 131);
 }
 
 
 .img {
     object-fit: cover;
-    border-radius: 12px 12px 0 0 ;
+    border-radius: 12px 12px 0 0;
     width: 100%;
     aspect-ratio: 1/.7;
 
@@ -302,6 +304,25 @@ a {
     color: #320028
 }
 
+.hai {
+    top: 10px;
+    position: absolute;
+    right: 10px;
+    width: 20px;
+    fill: red;
+    filter: drop-shadow(0px 0px 5px rgb(255, 0, 0));
+}
+
+.nhi {
+    top: 10px;
+    position: absolute;
+    right: 10px;
+    width: 20px;
+    filter: drop-shadow(0px 0px 4px rgb(255, 255, 255));
+}
+
+
+
 
 @media (max-width: 1150px) {
     .cover {
@@ -313,54 +334,64 @@ a {
     .cover {
         grid-gap: 2px;
         width: calc(100% - 4px);
-        padding:0 2px;
+        padding: 0 2px;
         grid-template-columns: repeat(2, 1fr);
     }
-    .outcard{
+
+    .outcard {
         border-radius: 5px;
     }
+
     .bda::-webkit-scrollbar {
-        display:none;
+        display: none;
     }
+
     .outcard .img {
-        border-radius: 5px 5px 0 0 ;
-    
+        border-radius: 5px 5px 0 0;
+
     }
-    .left,.right{
-        display:none;
+
+    .left,
+    .right {
+        display: none;
     }
-    .extra{
-        height:60px;
-        top:-30px
+
+    .extra {
+        height: 60px;
+        top: -30px
     }
-    .outfilter{
-        width:calc(100% - 10px);
-        padding:0 5px ;
-    
+
+    .outfilter {
+        width: calc(100% - 10px);
+        padding: 0 5px;
+
     }
 
     .outfilter>div {
-        padding: 5px ;
+        padding: 5px;
         border: .5px solid rgb(255, 255, 255);
     }
+
     .outfilter>div>svg {
         width: 20px;
     }
-    .outfilter>div{
+
+    .outfilter>div {
         font-size: 13px;
     }
+
     .info {
         font-size: 13px;
     }
+
     .outcard:hover {
-        z-index: 0;
-        box-shadow:none;
+        box-shadow: none;
     }
 }
 
 @media (max-width: 550px) {
     .cover {
-        grid-template-columns: repeat(2, 1fr);  
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -391,26 +422,55 @@ a {
     aspect-ratio: 2/1.2;
     width: 100%;
 }
+
 .delonexx {
     cursor: pointer;
-    fill:rgb(0, 0, 0);
+    fill: rgb(0, 0, 0);
     width: 20px;
     aspect-ratio: 1/1;
     padding: 15px;
     position: absolute;
-    bottom:1px;
+    bottom: 1px;
     right: 0;
     background: radial-gradient(25px, rgb(255, 255, 255), rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0));
-    box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.03);
+
 }
-.delonexx:hover{
-    fill:rgb(193, 0, 0);
+
+.delonexx:hover {
+    fill: rgb(193, 0, 0);
 }
+
 .inner {
     overflow: hidden;
     text-align: justify;
     flex: .3 1 500px;
 }
+
+.inner .oouutt {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.oouutt .innppx {
+    flex: 1 1 calc(50%);
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-items: flex-start;
+    flex-direction: row;
+}
+
+.innppx svg {
+    fill:rgb(0, 53, 12);
+    width: 18px;
+    aspect-ratio: 1/1;
+}
+
+
 
 .allinone {
     width: 100%;
@@ -453,7 +513,7 @@ a {
 .allinone .outall:first-child .allimx {
     border-radius: 8px 0 0 8px;
     opacity: 0.5;
-    cursor:no-drop;
+    cursor: no-drop;
 
 }
 
@@ -465,43 +525,34 @@ a {
     border-radius: 0 8px 8px 0;
 }
 
-.dekho{
+.dekho {
     padding: 15px;
-    width:calc(100% - 30px);
+    width: calc(100% - 30px);
     border-radius: 8px;
     overflow: hidden;
-    margin-top:4px;
-    display:flex;
+    margin-top: 20px;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: flex-start;
-    gap:6px;
+    gap: 6px;
     background-color: #f9f9f9;
     position: relative;
     overflow: hidden;
 }
-.dekho .re{
+
+.dekho .re {
     transition: .2s ease;
     cursor: pointer;
-    text-wrap:nowrap;
+    text-wrap: nowrap;
     max-width: 100%;
-    padding:5px 10px;
+    padding: 5px 10px;
     background-color: #ffffff;
-    color:rgb(91, 91, 91);
+    color: rgb(91, 91, 91);
     border-radius: 8px;
 }
 
-.cir{
-position:absolute;
-top:100px;
-left:-40px;
-width:800px;
-border-radius: 10% 5% 30% 14%;
-z-index: -1;
-aspect-ratio: 1/1;
-background-color: #c5c5c5;
-}
 .inner p {
     margin: 3px 0;
 }
@@ -520,7 +571,7 @@ background-color: #c5c5c5;
 .btn a {
     border-radius: 5px;
     background-color: rgb(218, 241, 255);
-    color: rgb(0, 149, 255);
+    color: rgb(0, 166, 255);
     padding: 2px 15px 3px 15px;
 }
 
@@ -540,7 +591,7 @@ form button,
     justify-content: center;
     border: none;
     border-radius: 5px;
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(239, 239, 239);
     color: rgb(0, 0, 0);
     padding: 2px 15px 3px 15px;
 }
@@ -554,6 +605,31 @@ form button {
 form .button:hover {
     background-color: rgb(86, 86, 86);
     color: rgb(255, 255, 255);
+}
+
+.usee {
+    margin:3%;
+    padding:1%;
+    cursor: pointer;
+    width: calc(92% - 20px);
+    font-size: large;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 5px
+}
+.usee:hover{
+    color:rgb(0, 153, 255);
+}
+
+.usee>svg {
+    fill: rgb(0, 153, 255);
+    border-radius: 50%;
+    border:1px solid rgba(0, 115, 255, 0.798);
+    width: 30px;
+    padding: 2px;
+    aspect-ratio: 1/1;
 }
 
 /* ______________________________________________Add ______________________________ */
@@ -808,7 +884,7 @@ label {
 }
 
 .sndimgv:hover {
-    background-color: #969696;
+    background-color: #ff8800;
     color: white;
     flex-direction: row;
     gap: 5px;
@@ -880,24 +956,30 @@ label {
     background-color: rgb(224, 255, 243);
     padding: 6px 15px 5px 15px;
 }
-.ratingbox button:hover{
+
+.ratingbox button:hover {
     border: 1px solid rgb(0, 255, 128);
     background-color: rgb(255, 255, 255);
 }
+
 .showrev {
     position: relative;
-    background-color: #000000;
+    background-color: rgb(46, 46, 46);
+    border-top: 10px double rgb(255, 255, 255);
     width: calc(100% - 40px);
-    padding:20px;
+    padding: 40px 20px 20px 20px;
+    margin: 0;
     display: flex;
     flex-direction: row;
-    align-items: center;
     flex-wrap: wrap-reverse;
-    justify-content: center;
-    gap: 3px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
 }
+
 .onereview {
-    width:100%;
+    position: relative;
+    width: 100%;
     flex: 1 1 300px;
     background-color: rgba(245, 245, 245, 0.389);
     padding: 10px;
@@ -906,6 +988,10 @@ label {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+}
+
+.onereview:hover {
+    box-shadow: 0px 0px 8px rgb(0, 0, 0);
 }
 
 .immgg {
@@ -936,14 +1022,13 @@ label {
 }
 
 .comment {
-    margin:4px 5%;
-    overflow-wrap: break-word;
-    overflow-y: auto;
-    font-family: inherit;
+    margin: 4px 5%;
     text-align: left;
-    width:90%;
+    width: 90%;
+    max-width: 350px;
+    overflow-wrap: break-word;
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 13px;
     border: none;
     resize: none;
     outline: none;
@@ -955,25 +1040,28 @@ label {
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap:4px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 3px;
 }
-.ft p{
+
+.ft div {
     font-size: 13px;
-    margin:4px 0 0 0;
-    color: rgb(142, 142, 142);
+    color: rgb(170, 170, 170);
+
 }
-.ft svg:hover {
-    fill: rgb(198, 0, 0);
+
+
+.ft svg:hover:last-child {
+    fill: rgb(255, 0, 0);
     cursor: pointer;
 }
 
 /* ________________________________________________________________common_________________________________________ */
 .outt {
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     z-index: 50;
     width: 100vw;
     height: 100vh;
@@ -989,7 +1077,7 @@ label {
     flex-direction: column;
     max-width: 350px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.366); 
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.366);
     width: 60%;
     padding: 20px;
     border-radius: 10px;
@@ -1016,9 +1104,11 @@ label {
 .common .dellx:hover {
     border: 1px solid red;
 }
-.common b{
-    color:red;
+
+.common b {
+    color: red;
 }
+
 .choose {
     display: flex;
     flex-direction: row;

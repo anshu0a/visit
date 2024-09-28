@@ -1,5 +1,5 @@
 
-
+// window.history.replaceState(null, document.title, window.location.href);
 
 
 const icon = document.querySelectorAll(".dell");
