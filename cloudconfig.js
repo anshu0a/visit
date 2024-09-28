@@ -16,8 +16,8 @@ const storage = new CloudinaryStorage({
     },
 })
  const removeimage = async(hh)=>{
-   let hell =await cloudinary.uploader.destroy(hh)
- };
+    await cloudinary.uploader.destroy(hh);
+};
 
 module.exports = {
     cloudinary,

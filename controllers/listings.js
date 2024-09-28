@@ -112,6 +112,7 @@ module.exports.doedit = async (req, res) => {
 module.exports.deleteonepic = async (req, res) => {
     try {
         if (req.body.filename !== "undefined") {
+            console.log(req.body.filename)
             await removeimage(req.body.filename);
         }
         await listing.findByIdAndUpdate(`${req.params.id}`,
@@ -127,7 +128,6 @@ module.exports.deleteonepic = async (req, res) => {
 
 }
 module.exports.newimg = async (req, res) => {
-    console.log("hello")
     try {
         if (req.file) {
 

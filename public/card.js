@@ -41,8 +41,6 @@ const deleteonebtn = document.querySelector(".delonexx")
 
 if(deleteonebtn){
     deleteonebtn.addEventListener("click", function () {
-        common.removeChild(inp1);
-        common.removeChild(inp2);
          outt.style.display = "flex";
          common.children[0].innerHTML="Are you sure! <br> picture can't <b>restore</b> in future ";
         common.action = `/deleteonepost/${inp1.value}`;
@@ -135,8 +133,9 @@ const button = document.querySelector(".button");
 if (button) {
     button.addEventListener("click", function () {
         loader.style.display = "flex"
-        onx.innerText = "Deleating . . ."
-        this.parentElement.submit();
+        loader.children[0].innerText = "Deleating . . ."
+        console.log(this)
+        // this.parentElement.submit();
     })
 }
 // _______________________________________________________boundary of small img_____________________________________
