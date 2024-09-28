@@ -127,6 +127,7 @@ module.exports.deleteonepic = async (req, res) => {
 
 }
 module.exports.newimg = async (req, res) => {
+    console.log("hello")
     try {
         if (req.file) {
 

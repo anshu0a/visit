@@ -133,7 +133,7 @@ app.get("/crt",checkuser,async (req, res) => {
 })
  app.post("/new",checkuser,upload.single("actimg"), wrap(listingcontrol.newpost));
 
- app.post("/addmoreimg/:id",checkuser,upload.single("iimm"), wrap(listingcontrol.newimg))
+ app.post("/addmoreimg/:id",checkuser,upload.single("iimmgg"), wrap(listingcontrol.newimg))
 
 // _________________________________________________________________edit__________________________________________________________________
 
