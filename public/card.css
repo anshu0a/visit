@@ -465,7 +465,7 @@ a {
 }
 
 .innppx svg {
-    fill:rgb(0, 53, 12);
+    fill:rgb(59, 59, 59);
     width: 18px;
     aspect-ratio: 1/1;
 }
@@ -558,8 +558,10 @@ a {
 }
 
 .btn {
-    width: 92%;
-    margin: 0 4%;
+    background-color: #ffffff;
+    position: sticky;
+    bottom:0;
+    padding: 10px 4%;
     gap: 10px;
     display: flex;
     align-items: center;
@@ -608,7 +610,7 @@ form .button:hover {
 }
 
 .usee {
-    margin:3%;
+    margin: 5px 3%;
     padding:1%;
     cursor: pointer;
     width: calc(92% - 20px);

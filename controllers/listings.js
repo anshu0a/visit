@@ -92,9 +92,12 @@ module.exports.doedit = async (req, res) => {
             const urll = req.file.path;
             const filenamee = req.file.filename;
 
-            await listing.findByIdAndUpdate(`${req.params.id}`,
-                { $push: { image: { filename: `${filenamee}`, url: `${urll}`, } } }
+           let ff = await listing.findByIdAndUpdate(`${req.params.id}`,
+                {  $push: { image: { filename: `${filenamee}`, url: `${urll}`, } } }
             );
+            ff.image.pull(ff.image[0]);
+            ff.save();
+            console.log(ff);
         }
         const filterx = req.body.filters.split(',').map(item => item.trim());
         for (filt of filterx) {
@@ -110,18 +113,20 @@ module.exports.doedit = async (req, res) => {
 }
 
 module.exports.deleteonepic = async (req, res) => {
+    let filenamex = req.body.filename.trim();
+    let urlx = req.body.url.trim();
     try {
         if (req.body.filename !== "undefined") {
-            console.log(req.body.filename)
             await removeimage(req.body.filename);
         }
-        await listing.findByIdAndUpdate(`${req.params.id}`,
-            { $pull: { image: { filename: `${req.body.filename}`, url: `${req.body.url}`, } } }
+        let yy = await listing.findByIdAndUpdate(`${req.params.id}`,
+            { $pull: { image: { filename: `${filenamex}`, url:`${urlx}`, } } }
         );
+        yy.save();
         req.flash("success", `Image removed from your post`);
         res.redirect(`/listing/${req.params.id}`);
     } catch (err) {
-        console.log(err)
+        console.log("rrrrrr"+err)
         req.flash("error", `${err}`);
         res.redirect(`/listing/${req.params.id}`);
     }
@@ -147,7 +152,9 @@ module.exports.newimg = async (req, res) => {
 module.exports.changedbimage = async (req, res, next) => {
 
     try {
-        const chgg = await listing.findById(`${req.params.id}`)
+        const chgg = await listing.findByIdAndUpdate(`${req.params.id}`,
+
+        )
         if (chgg.image[0].filename !== "undefined") {
             await removeimage(chgg.image[0].filename);
         }

@@ -134,8 +134,7 @@ if (button) {
     button.addEventListener("click", function () {
         loader.style.display = "flex"
         loader.children[0].innerText = "Deleating . . ."
-        console.log(this)
-        // this.parentElement.submit();
+         this.parentElement.submit();
     })
 }
 // _______________________________________________________boundary of small img_____________________________________
