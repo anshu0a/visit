@@ -26,6 +26,9 @@ const filter=  require("./controllers/filter.js")
 app.listen(8080, () => {
     console.log("Express working...")
 });
+const dns = require('dns');
+
+dns.setDefaultResultOrder('ipv4first');
 const monurl = process.env.ATLAS
 
 main().then(() => { console.log("Mongoose also Working...") }).catch((e) => { console.log(e) })
