@@ -27,7 +27,6 @@ app.listen(8080, () => {
     console.log("Express working...")
 });
 const dns = require('dns');
-
 dns.setDefaultResultOrder('ipv4first');
 const monurl = process.env.ATLAS
 
